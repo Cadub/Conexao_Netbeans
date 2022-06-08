@@ -6,7 +6,11 @@ public class Usuario {
     private int pontuacaoTotal;
 
     public  Usuario(String nome, String email, String senha) {
-
+    /*O super() serve para chamar o construtor da superclasse. 
+    Ele sempre é chamado, mesmo quando não está explícito no código, 
+    quando for explicitado deve ser o primeiro item dentro do construtor*/
+    
+    
         this.senha = senha;
         this.email = email;
         this.nome = nome;
