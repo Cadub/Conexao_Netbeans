@@ -1,0 +1,28 @@
+try {     
+            String email, senha;
+            email = CaixaDeTextoEmail.getText();
+            senha = new String (CaixaDeTextoSenha.getPassword());
+
+            Usuario usuario = new Usuario(email, senha);
+
+            UsuarioDAO ObjetoUsuarioDAO = new UsuarioDAO();
+            boolean rsusuarioDAO = ObjetoUsuarioDAO.existe(usuario);
+
+            if (rsusuarioDAO){
+
+                PrincipalTela TP = new PrincipalTela();
+                TP.setVisible(true);
+
+                PrincipalTela.CaixaParaEmail.setText(email);
+
+            this.dispose();
+
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Email ou Senha Inválidos");
+            }
+
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "FRMLOGINVIEW" + e);
+        }
