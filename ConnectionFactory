@@ -1,0 +1,42 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import javax.swing.JOptionPane;
+
+
+public class ConnectionFactory {
+   
+ //Qual computador realizará a conexão   
+    private static String host = "localhost";
+    
+ //A porta 3306 é a porta padrão utilizada para o protocolo MySQL   
+    private static String port = "3306";
+ 
+ //Nome do banco de dados a se conectar
+    private static String db = "ProjetoPi";
+    
+ //Nome usuário Sql
+    private static String usuario = "root";
+    
+    private static String senha = "";
+    
+    //clausula catch or declare
+    public static Connection getConnection() throws Exception{
+    
+        //jdbc:mysql//localhost:3306//20221_maua_poo_turmaA_sistema_academico?useTimezOne=true&serverTimezone=UTC
+        String stringDeConexao = String.format("jdbc:mysql://%s:%s/%s?useTimezone=true&serverTimezone=UTC", host, port, db);
+        Connection c = DriverManager.getConnection(stringDeConexao, usuario, senha); 
+       
+        return c;
+    }
+    public static void main (String [] args) {
+        
+        try{
+        Connection teste = ConnectionFactory.getConnection();
+            JOptionPane.showMessageDialog(null, "Conexão OK!");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Exceção: " + e.getMessage());
+        }
+        
+    }
+}
